@@ -1,0 +1,44 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000000000                . = 0x0
+
+.text           0x0000000000000000     0x1000
+                0x0000000000000000                _text = .
+ *(.text)
+ .text          0x0000000000000000       0x10 init.o
+                0x0000000000000000                _start
+ .text          0x0000000000000010       0x74 softwareblink.o
+                0x0000000000000010                main
+                0x0000000000001000                . = 0x1000
+ *fill*         0x0000000000000084      0xf7c 
+ *(.strings)
+                0x0000000000001000                _etext = .
+
+.rela.dyn       0x0000000000001000        0x0
+ .rela.text     0x0000000000001000        0x0 init.o
+
+.data           0x0000000000001000        0x0
+ *(.data)
+ .data          0x0000000000001000        0x0 init.o
+ .data          0x0000000000001000        0x0 softwareblink.o
+
+.bss            0x0000000000001000        0x0
+ *(.bss)
+ .bss           0x0000000000001000        0x0 init.o
+ .bss           0x0000000000001000        0x0 softwareblink.o
+LOAD init.o
+LOAD softwareblink.o
+LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a
+LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libm.a
+LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgcc.a
+OUTPUT(softwareblink elf32-littleriscv)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 softwareblink.o
+                                         0x12 (size before relaxing)
