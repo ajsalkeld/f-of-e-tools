@@ -4,7 +4,7 @@ module main_pll(REFERENCECLK,
             RESET);
 
 input REFERENCECLK;
-input RESET;    /* To initialize the simulation properly, the RESET signal (Active Low) must be asserted at the beginning of the simulation */ 
+input RESET;
 output PLLOUTCORE;
 output PLLOUTGLOBAL;
 
@@ -21,7 +21,6 @@ SB_PLL40_CORE main_pll_inst(.REFERENCECLK(REFERENCECLK),
                             .SDO(),
                             .SCLK());
 
-//\\ Fin=13.56, Fout=40.68;
 defparam main_pll_inst.DIVR = 4'b0000;
 defparam main_pll_inst.DIVF = 7'b0101111;
 defparam main_pll_inst.DIVQ = 3'b100;
