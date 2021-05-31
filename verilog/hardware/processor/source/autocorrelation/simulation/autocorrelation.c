@@ -22,7 +22,7 @@ int main(void)
         printf_("%s, ", autocorrelation[k]);
     }
 
-    printf_("]\n")
+    printf_("]\n");
 
     return 0;
 }
