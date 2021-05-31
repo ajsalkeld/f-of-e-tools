@@ -6,6 +6,8 @@ int main(void)
 
     float autocorrelation[data_len];
 
+    printf_("[%s]", autocorrelation);
+
     printf_("[");
 
     for (int k = 0; k < data_len; k++)
