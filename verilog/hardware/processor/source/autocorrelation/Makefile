@@ -4,8 +4,8 @@ include $(TREEROOT)/tools/sunflower/conf/setup.conf
 TARGET-ARCH	= riscv32-elf
 TARGET		= riscv
 
-PROGRAM		= template
-PROGRAM-SF	= template-sf
+PROGRAM		= autocorrelation
+PROGRAM-SF	= autocorrelation-sf
 INIT		= init
 INIT-SF		= init-sf
 
