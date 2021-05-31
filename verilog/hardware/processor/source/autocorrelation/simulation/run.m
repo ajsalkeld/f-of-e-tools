@@ -1,5 +1,5 @@
 newnode riscv
 sizemem		65536
-srecl		hello.sr
+srecl		autocorrelation.sr
 run
 on
