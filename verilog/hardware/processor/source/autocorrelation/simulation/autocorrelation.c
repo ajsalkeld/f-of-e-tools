@@ -4,7 +4,7 @@
 int main(void)
 {
 
-    float autocorrelation[data_len];
+    float autocorrelation[50];
 
     printf_("[%s]", autocorrelation);
 
