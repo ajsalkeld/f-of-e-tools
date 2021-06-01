@@ -10,7 +10,7 @@ SECTIONS
 	{
 		_text = . ;
 		*(.text) 
-		. = 0xFC24;
+		. = 0x6400;
 		*(.strings)
 		_etext = . ;
 	}

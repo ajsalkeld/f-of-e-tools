@@ -4,8 +4,7 @@
  
 double PI;
 typedef double complex cplx;
-volatile unsigned int *debugPin = (unsigned int *)0x2000;
- 
+
 void _fft(cplx buf[], cplx out[], int n, int step)
 {
 	if (step < n) {
@@ -29,25 +28,19 @@ void fft(cplx buf[], int n)
 	_fft(buf, out, n, 1);
 }
  
- 
-void toggle_pin() {
-	if (*debugPin == 0x00) {
-		*debugPin = 0xFF;
-	}
-	else {
-		*debugPin = 0x00;
-	}
-}
- 
 int main()
 {
-	*debugPin = 0x00;
-	do {
+	volatile unsigned int *debugPin = (unsigned int *)0x2000;
+	unsigned char output = 0xFF;
+	*debugPin = output;
+
+	while (1) {
 		PI = atan2(1, 1) * 4;
 		cplx buf[] = {1, 1, 1, 1, 0, 0, 0, 0};
 	 
 		fft(buf, 8);
-		toggle_pin();
- 	} while (1);
+		output = ~output;
+		*debugPin = output;
+ 	}
 	return 0;
 }
