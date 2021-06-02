@@ -1,5 +1,5 @@
 newnode riscv
-sizemem		65536
+sizemem		262144
 srecl		autocorrelation.sr
 run
 on

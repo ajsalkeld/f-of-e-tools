@@ -1,4 +1,5 @@
 #include "autocorrelation_data.h"
+#include <stdio.h>
 #include <printf.h> //For sunflower simulation
 
 int main(void)
