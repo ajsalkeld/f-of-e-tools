@@ -73,6 +73,9 @@ module top (led);
 	wire		data_memread;
 	wire[3:0]	data_sign_mask;
 
+	// Reducing bit width of instruction memory signals
+	//wire[29:0]	mod_inst_in = inst_in[31:2];
+
 
 	cpu processor(
 		.clk(clk_proc),
@@ -88,7 +91,8 @@ module top (led);
 
 	instruction_memory inst_mem( 
 		.addr(inst_in), 
-		.out(inst_out)
+		.out(inst_out),
+		.clk(clk)
 	);
 
 	data_mem data_mem_inst(

@@ -1,0 +1,171 @@
+	.file	"bsort.c"
+	.option nopic
+	.text
+	.globl	bsort_input_len
+	.section	.srodata,"a"
+	.align	2
+	.type	bsort_input_len, @object
+	.size	bsort_input_len, 4
+bsort_input_len:
+	.word	59
+	.section	.rodata
+	.align	2
+.LC0:
+	.byte	83
+	.byte	105
+	.byte	110
+	.byte	103
+	.byte	32
+	.byte	116
+	.byte	111
+	.byte	32
+	.byte	109
+	.byte	101
+	.byte	32
+	.byte	111
+	.byte	102
+	.byte	32
+	.byte	116
+	.byte	104
+	.byte	101
+	.byte	32
+	.byte	109
+	.byte	97
+	.byte	110
+	.byte	44
+	.byte	32
+	.byte	77
+	.byte	117
+	.byte	115
+	.byte	101
+	.byte	44
+	.byte	32
+	.byte	116
+	.byte	104
+	.byte	101
+	.byte	32
+	.byte	109
+	.byte	97
+	.byte	110
+	.byte	32
+	.byte	111
+	.byte	102
+	.byte	32
+	.byte	116
+	.byte	119
+	.byte	105
+	.byte	115
+	.byte	116
+	.byte	115
+	.byte	32
+	.byte	97
+	.byte	110
+	.byte	100
+	.byte	32
+	.byte	116
+	.byte	117
+	.byte	114
+	.byte	110
+	.byte	115
+	.byte	46
+	.byte	46
+	.byte	46
+	.text
+	.align	2
+	.globl	main
+	.type	main, @function
+main:
+	addi	sp,sp,-96
+	sw	ra,92(sp)
+	sw	s0,88(sp)
+	addi	s0,sp,96
+.L7:
+	lui	a5,%hi(.LC0)
+	addi	a4,s0,-84
+	addi	a5,a5,%lo(.LC0)
+	li	a3,59
+	mv	a2,a3
+	mv	a1,a5
+	mv	a0,a4
+	call	memcpy
+	li	a5,59
+	addi	a5,a5,-1
+	sw	a5,-24(s0)
+	j	.L2
+.L6:
+	sw	zero,-20(s0)
+	j	.L3
+.L5:
+	lw	a5,-20(s0)
+	addi	a4,s0,-16
+	add	a5,a4,a5
+	lbu	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	lbu	a5,-68(a5)
+	bleu	a4,a5,.L4
+	lw	a5,-20(s0)
+	addi	a4,s0,-16
+	add	a5,a4,a5
+	lbu	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	lbu	a5,-68(a5)
+	xor	a5,a4,a5
+	andi	a4,a5,0xff
+	lw	a5,-20(s0)
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	sb	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	addi	a4,s0,-16
+	add	a5,a4,a5
+	lbu	a3,-68(a5)
+	lw	a5,-20(s0)
+	addi	a4,s0,-16
+	add	a5,a4,a5
+	lbu	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	xor	a4,a3,a4
+	andi	a4,a4,0xff
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	sb	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a4,s0,-16
+	add	a5,a4,a5
+	lbu	a4,-68(a5)
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	lbu	a5,-68(a5)
+	xor	a5,a4,a5
+	andi	a4,a5,0xff
+	lw	a5,-20(s0)
+	addi	a3,s0,-16
+	add	a5,a3,a5
+	sb	a4,-68(a5)
+.L4:
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	sw	a5,-20(s0)
+.L3:
+	lw	a4,-20(s0)
+	lw	a5,-24(s0)
+	blt	a4,a5,.L5
+	lw	a5,-24(s0)
+	addi	a5,a5,-1
+	sw	a5,-24(s0)
+.L2:
+	lw	a5,-24(s0)
+	bgtz	a5,.L6
+	j	.L7
+	.size	main, .-main
+	.ident	"GCC: (GNU) 8.2.0"
