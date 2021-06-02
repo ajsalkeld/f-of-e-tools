@@ -31,7 +31,7 @@ $(INIT).o: $(INIT).S
 	$(AS) $(ASFLAGS) $(INIT).S -o $(INIT).o
 
 $(PROGRAM): $(OBJS)
-	$(LD) $(LDFLAGS) $(OBJS) -o $@ -lc -lm -lgcc
+	$(LD) $(LDFLAGS) $(OBJS) -o $@ -lprintf -lc -lm -lgcc
 
 $(PROGRAM).sr:$(PROGRAM)
 	$(OBJCOPY) -O srec $(PROGRAM) $@
@@ -44,7 +44,7 @@ $(INIT-SF).o: $(INIT-SF).S
 	$(CPP) $(INIT-SF).S > $(INIT-SF).i; $(AS) $(ASFLAGS) $(INIT-SF).i -o $(INIT-SF).o
 
 $(PROGRAM-SF): $(OBJS-SF)
-	$(LD) $(LDFLAGS-SF) $(OBJS-SF) -o $@ -lc -lgcc -lgloss
+	$(LD) $(LDFLAGS-SF) $(OBJS-SF) -o $@ -lprintf -lc -lgcc -lgloss
 
 $(PROGRAM-SF).sr:$(PROGRAM-SF)
 	$(OBJCOPY) -O srec $(PROGRAM-SF) $@
