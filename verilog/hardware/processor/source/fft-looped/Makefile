@@ -36,7 +36,7 @@ $(PROGRAM).sr:$(PROGRAM)
 	$(OBJCOPY) -O srec $(PROGRAM) $@
 
 $(PROGRAM).o: $(PROGRAM).c Makefile
-	$(CC) $(CFLAGS) $(OPTFLAGS) -c $(PROGRAM).c 
+	$(CC) $(CFLAGS) $(OPTFLAGS) -c $(PROGRAM).c
 
 
 $(INIT-SF).o: $(INIT-SF).S
